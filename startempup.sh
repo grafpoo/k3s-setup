@@ -10,6 +10,8 @@ echo "STARTING SERVER"
 cd server
 vagrant up
 
+### NOTE: vagrant docs say onfig.vm.provision shells will run as root, but my
+###       experience here has not borne that out. so i am sudo'ing everything
 # dig the node token info off the server - the client needs it at startup
 vagrant ssh -c 'sudo k3s kubectl get node'  # this seems to initialize the info file
 echo "#!/bin/bash" > ../scripts/startup-client.sh  # start building the client setup script
