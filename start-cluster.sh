@@ -17,12 +17,12 @@ vagrant ssh -c 'sudo k3s kubectl get node'  # this seems to initialize the info 
 echo "#!/bin/bash" > ../scripts/startup-client.sh  # start building the client setup script
 echo "set -x" >> ../scripts/startup-client.sh  # start building the client setup script
 #echo -n "export NODE_TOKEN=" >> ../scripts/startup-client.sh  # start building the client setup script
-vagrant ssh -c 'sudo cat /var/lib/rancher/k3s/server/node-token' | tr -dC '[:print:]\t\n' | \
+vagrant ssh -c "sudo cat /var/lib/rancher/k3s/server/node-token" | tr -dC '[:print:]\t\n' | \
    awk '{print "export NODE_TOKEN=\"" $1 "\""}' >> ../scripts/startup-client.sh
 echo "export K3S_SERVER=$SERVER_IP" >> ../scripts/startup-client.sh # this from the server Vagrantfile
 echo "nohup sudo k3s agent --server https://\${K3S_SERVER}:6443 --token \${NODE_TOKEN} 1>/tmp/k3s.log 2>&1 &" >> ../scripts/startup-client.sh
 # and the config for kubectl
-vagrant ssh -c 'sudo cat /etc/rancher/k3s/k3s.yaml' | sed -e "s/localhost/$SERVER_IP/" > ~/.kube/k3s.yaml
+vagrant ssh -c "sudo cat /etc/rancher/k3s/k3s.yaml" | sed -e "s/localhost/$SERVER_IP/" > ~/.kube/k3s.yaml
 
 echo "STARTING CLIENT"
 cd ../client
