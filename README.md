@@ -24,7 +24,7 @@ kci() {
 }
 ``` 
 
-note that the cluster doesn't survive very well when you sleep your machine. the easiest thing to do if it becomes unresponsive is to throw it away and start over. the easiest way to do that is to *vagrant destroy* the two nodes. the script *kill-cluster.sh* does just that
+that the cluster doesn't survive very well when you sleep your machine. the easiest thing to do if it becomes unresponsive is to throw it away and start over. the easiest way to do that is to *vagrant destroy* the two nodes. the script *kill-cluster.sh* does just that
 
 ```
 kill-cluster.sh
