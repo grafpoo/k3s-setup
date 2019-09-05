@@ -1,6 +1,6 @@
 # k3s-setup
 
-this is a set of scripts that set up a k3s cluster with a couple of vagrant instances (see https://github.com/rancher/k3s). the first instance is the server (which also runs as a node), the second a client node. the scripts run the vagrant hosts in VirtualBox (i'm currently at 5.2.32)
+this is a set of scripts that set up a k3s cluster with a couple of vagrant instances (see https://github.com/rancher/k3s). the first instance is the server (which also runs as a node), the second a client node. the scripts run the vagrant hosts in VirtualBox (i'm currently at 5.2.32).
 
 to set up a cluster, run:
 ```
