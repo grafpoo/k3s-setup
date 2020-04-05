@@ -30,3 +30,11 @@ that the cluster doesn't survive very well when you sleep your machine. the easi
 kill-cluster.sh
 ```
 
+last note; k3s does not set up any storageclass objects by default. this post shows how to set a default storageclass using local disk:
+https://github.com/rancher/k3s/issues/85#issuecomment-492475034
+```
+sudo mkdir /opt/local-path-provisioner
+kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/deploy/local-path-storage.yaml
+kubectl patch storageclass local-path -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+```
+
